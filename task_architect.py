@@ -32,3 +32,14 @@ for i in range(num_tasks):
     deadline_mins = ConvertToMinutes(deadline_input)
     tasks.append([name, deadline_mins, difficulty, time])
     total_time += time
+
+# Sort tasks so the nearest deadline is at the top
+tasks.sort(key=lambda x: x[1])
+
+# Logic to detect overload and suggest a task to postpone
+if total_time > 300:
+    print("\nYou are too overloaded!")  # Simple print warning for CR003
+    longest_task = max(tasks, key=lambda x: x[3])
+    print("Suggestion: Consider postponing ->", longest_task[0])
+else:
+    print("\nYou are within a manageable workload.")
