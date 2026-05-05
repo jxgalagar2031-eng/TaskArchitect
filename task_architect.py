@@ -16,3 +16,19 @@ def ConvertToMinutes(value):
         return int(value[:-1]) * 1440
     else:
         return int(value)
+
+
+num_tasks = int(input("How many tasks? "))
+
+# Loop to collect task details from the user
+for i in range(num_tasks):
+    print("\nTask", i + 1)
+    name = input("Task name: ")
+    deadline_input = input("Deadline (e.g. 30m, 2h, 1d): ")
+    difficulty = input("Difficulty (Easy/Medium/Hard): ")
+    time = int(input("Estimated time (minutes): "))
+
+    # Use the Pascal Case function to process the deadline
+    deadline_mins = ConvertToMinutes(deadline_input)
+    tasks.append([name, deadline_mins, difficulty, time])
+    total_time += time
